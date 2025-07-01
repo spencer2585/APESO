@@ -1,0 +1,7 @@
+## Title: APESO
+## APIVersion: 101045
+## SavedVariables: APESOSavedVars
+## DependsOn: LibZone>=077
+
+APESO.lua
+Items.lua
