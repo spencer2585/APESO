@@ -31,7 +31,7 @@ class ESOWeb(WebWorld):
 class ESOWorld(World):
     """
     Elder Scrolls Online is a MMORPG Set in the world of The elder Scrolls. Journey across the reagons of Tamriel while fighting 
-    against various enimys
+    against various enemies
     """
     game = "Elder Scrolls Online"
     options_dataclass = ESOOptions
