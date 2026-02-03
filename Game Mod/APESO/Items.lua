@@ -1,3 +1,2 @@
-APESO = APESO or {}
-
-APESO.ZoneAccess = {false,false,false,false,false}
+APESO_ReceivedItems = {
+}

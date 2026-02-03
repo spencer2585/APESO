@@ -1,7 +1,15 @@
 ## Title: APESO
-## APIVersion: 101045
+## APIVersion: 101048
 ## SavedVariables: APESOSavedVars
-## DependsOn: LibZone>=077
 
+
+
+APESO_QuestEquivalences.lua
+IgnoreZones.lua
 APESO.lua
+UI/DebugOverlay.lua
+UI/WarningWindow.lua
+UI/MainQuestBlockWindow.lua
 Items.lua
+Bindings.xml
+APESO_NPCLocks.lua

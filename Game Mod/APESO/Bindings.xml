@@ -1,0 +1,11 @@
+<Bindings>
+    <Layer name="SI_KEYBINDINGS_LAYER_GENERAL">
+        <Category name="APESO">
+            <Action name="RELOADUI">
+                <Down>
+                    APESO.ReloadUI()
+                </Down>
+            </Action>
+        </Category>
+    </Layer>
+</Bindings>
