@@ -37,12 +37,12 @@ Right now there are settings to have completing zone quests, main story quests, 
 ## FAQ
 
 ### I did not send/ recive an item:
-    Make sure you triggered a reload ui event. If your still having issues do it again, in rare cases reloadUI may need to be triggered twice. If this is the case or the issue still persists send a message in the thread in the Archipelago After Dark server and ping @Spencer2585 so that i can help troubleshoot and/or fix the issue for future releases
+ Make sure you triggered a reload ui event. If your still having issues do it again, in rare cases reloadUI may need to be triggered twice. If this is the case or the issue still persists send a message in the thread in the Archipelago After Dark server and ping @Spencer2585 so that i can help troubleshoot and/or fix the issue for future releases
 
 ### I cannot find x quest in Alik'r Desert:
-    Zone quests in Alik'r Desert have a few bugs in base eso. specifically two quests in the zone questline have regular side quest symbols, these quests are _Gone Missing_ and and _Imperial Incursion_ The quest giver for these can be found near where the last quest in the chain ended. I recommend checking UESP for more details on where to go.
-    If you cannot find _Risen From the Depths_ the quest giver can be found near the other set of docks from where you arrive in sentinal, once again i reccomend checking UESP for more details.
+ Zone quests in Alik'r Desert have a few bugs in base eso. specifically two quests in the zone questline have regular side quest symbols, these quests are _Gone Missing_ and and _Imperial Incursion_ The quest giver for these can be found near where the last quest in the chain ended. I recommend checking UESP for more details on where to go.
+ If you cannot find _Risen From the Depths_ the quest giver can be found near the other set of docks from where you arrive in sentinal, once again i reccomend checking UESP for more details.
 
 ### I entered an area and now i have a message saying i do not have access to the area:
-    If you entered one of the major zones like Glenumbra or Auridon then make sure you have recived that zones access item from the randomizer. If you have and are still getting the warning then click the reloadUI button on the warning to trigger a reloadUI event and sync your items with the server.
-    If that doesnt work or you entered another area then there is a code issue. ping @Spencer2585 in the Elder Scrolls Online thread in the Archipelago After Dark Server and tell me the name of the area you entered.
+If you entered one of the major zones like Glenumbra or Auridon then make sure you have recived that zones access item from the randomizer. If you have and are still getting the warning then click the reloadUI button on the warning to trigger a reloadUI event and sync your items with the server.
+If that doesnt work or you entered another area then there is a code issue. ping @Spencer2585 in the Elder Scrolls Online thread in the Archipelago After Dark Server and tell me the name of the area you entered.
