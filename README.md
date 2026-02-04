@@ -36,7 +36,7 @@ Right now there are settings to have completing zone quests, main story quests, 
 
 ## FAQ
 
-### I did not send/ recive an item:
+### I did not send / recive an item:
  Make sure you triggered a reload ui event. If your still having issues do it again, in rare cases reloadUI may need to be triggered twice. If this is the case or the issue still persists send a message in the thread in the Archipelago After Dark server and ping @Spencer2585 so that i can help troubleshoot and/or fix the issue for future releases
 
 ### I cannot find x quest in Alik'r Desert:
