@@ -5,6 +5,9 @@ This mod requires the Archipelago software to generate and connect to the random
 > [!Warning]
 > This mod is currently in very early beta. as such there are bound to be many bugs or issues. If you want to wait until things are more stable then i recommend waiting a few months so that the worst bugs are fixed and new features can be added to improve the experiance. More details on the current state of the mod can be found in the Elder Scrolls Online thread in the Archipelago After Dark Server
 
+##Whats Randomized
+Right now there are settings to have completing zone quests, main story quests, and finding wayshrines as items and zone access and progressive main quest access as items. The goal is to complete the main quest and beat Molag bal. The Main Quest Items, Zone Access Items, and Main Quest Locations are not toggleable but you can turn off wayshrines and zone quests.
+
 ## Setup
 1.) Add eso.apworld to you custom worlds in archipelago, this can be done by opening the file with the archipelago launcher or by adding it to the custom_worlds folder in your Archipelago Install
 
