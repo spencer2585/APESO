@@ -1,10 +1,10 @@
 # Archipelago Elder Scrolls Online
-Get the latest version of APESO[here](https://github.com/spencer2585/APESO/releases/latest)
+Get the latest version of APESO [here](https://github.com/spencer2585/APESO/releases/latest)
 This mod requires the Archipelago software to generate and connect to the randomizer, find the latest version and setup instructions for Archipelago [here](https://github.com/ArchipelagoMW/Archipelago)
 
 **Warning**: This mod is currently in very early beta. as such there are bound to be many bugs or issues. If you want to wait until things are more stable then i recommend waiting a few months so that the worst bugs are fixed and new features can be added to improve the experiance. More details on the current state of the mod can be found in the Elder Scrolls Online thread in the Archipelago After Dark Server
 
-##Setup
+## Setup
 1.) Add eso.apworld to you custom worlds in archipelago, this can be done by opening the file with the archipelago launcher or by adding it to the custom_worlds folder in your Archipelago Install
 
 2.) Set up your yaml, the yaml can be found in the files in the latest release, by using Generate Template Options in the Archipelago launcher, or in the Options Creator also found in the Archipelago launcher. If you have chosen one of the first two options you must then open the yaml file in a text editor. The yaml contains all options for your game, options currently found in the yaml include
@@ -13,7 +13,8 @@ This mod requires the Archipelago software to generate and connect to the random
     -zone_quest_enabled: if you want zone quests to be locations in the randomizer
     -Wayshrine-checks-enabled: if you want descovering wayshrines to be locations in the randomizer
 
-    **WARNING**: if you turn off both wayshrine and zone quest checks you will have more items than locations and Archipelago will fail to generate a game
+*[!Warning]
+ if you turn off both wayshrine and zone quest checks you will have more items than locations and Archipelago will fail to generate a game
 
 3.) Generation: if you are generating the game then add you yaml to the players folder of your Archipelago install and run generate in the launcher, if someone else is generating the game you need to give them both eso.apworld and your yaml.
 
@@ -27,7 +28,7 @@ This mod requires the Archipelago software to generate and connect to the random
 
 8.)Create you character and play: Once the client is connected you can create a new character in eso and start playing. An Important note about how this randomizer works due to how modding eso works **Items and Locations will not automatically sync**. if you have done a location or recived an item you must trigger a reloadUI event to send locations and recive items. This rarely happens during natural gameplay but can be manually trigger by running /reloadui in chat or by creating a hotkey in controls. If you create a hotkey it must manually be reconfigured for every character.
 
-##FAQ
+## FAQ
 
 **I did not send/ recive an item**:
     Make sure you triggered a reload ui event. If your still having issues do it again, in rare cases reloadUI may need to be triggered twice. If this is the case or the issue still persists send a message in the thread in the Archipelago After Dark server and ping @Spencer2585 so that i can help troubleshoot and/or fix the issue for future releases
@@ -37,7 +38,7 @@ This mod requires the Archipelago software to generate and connect to the random
 
     If you cannot find _Risen From the Depths_ the quest giver can be found near the other set of docks from where you arrive in sentinal, once again i reccomend checking UESP for more details.
 
-    **I entered an area and now i have a message saying i do not have access to the area**:
-        If you entered one of the major zones like Glenumbra or Auridon then make sure you have recived that zones access item from the randomizer. If you have and are still getting the warning then click the reloadUI button on the warning to trigger a reloadUI event and sync your items with the server.
+**I entered an area and now i have a message saying i do not have access to the area**:
+    If you entered one of the major zones like Glenumbra or Auridon then make sure you have recived that zones access item from the randomizer. If you have and are still getting the warning then click the reloadUI button on the warning to trigger a reloadUI event and sync your items with the server.
 
-        If that doesnt work or you entered another area then there is a code issue. ping @Spencer2585 in the Elder Scrolls Online thread in the Archipelago After Dark Server and tell me the name of the area you entered.
+    If that doesnt work or you entered another area then there is a code issue. ping @Spencer2585 in the Elder Scrolls Online thread in the Archipelago After Dark Server and tell me the name of the area you entered.
