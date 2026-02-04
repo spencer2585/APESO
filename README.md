@@ -27,7 +27,9 @@ This mod requires the Archipelago software to generate and connect to the random
 
 7.) Connect with the client: The client can be found in the Archipelago Launcher and is included in the APWorld you installed earlier, once the client is open connect with the port, this will eather be given to you by the host or if you are hosting it can be found on the page for the game.
 
-8.)Create you character and play: Once the client is connected you can create a new character in eso and start playing. An Important note about how this randomizer works due to how modding eso works **Items and Locations will not automatically sync**. if you have done a location or recived an item you must trigger a reloadUI event to send locations and recive items. This rarely happens during natural gameplay but can be manually trigger by running /reloadui in chat or by creating a hotkey in controls. If you create a hotkey it must manually be reconfigured for every character.
+8.)Create you character and play: Once the client is connected you can create a new character in eso and start playing. An Important note about how this randomizer works 
+> [!IMPORTANT]
+>due to how modding eso works **Items and Locations will not automatically sync**. if you have done a location or recived an item you must trigger a reloadUI event to send locations and recive items. This rarely happens during natural gameplay but can be manually trigger by running /reloadui in chat or by creating a hotkey in controls. If you create a hotkey it must manually be reconfigured for every character.
 
 ## FAQ
 
