@@ -41,10 +41,8 @@ Right now there are settings to have completing zone quests, main story quests, 
 
 **I cannot find x quest in Alik'r Desert**:
     Zone quests in Alik'r Desert have a few bugs in base eso. specifically two quests in the zone questline have regular side quest symbols, these quests are _Gone Missing_ and and _Imperial Incursion_ The quest giver for these can be found near where the last quest in the chain ended. I recommend checking UESP for more details on where to go.
-
     If you cannot find _Risen From the Depths_ the quest giver can be found near the other set of docks from where you arrive in sentinal, once again i reccomend checking UESP for more details.
 
 **I entered an area and now i have a message saying i do not have access to the area**:
     If you entered one of the major zones like Glenumbra or Auridon then make sure you have recived that zones access item from the randomizer. If you have and are still getting the warning then click the reloadUI button on the warning to trigger a reloadUI event and sync your items with the server.
-
     If that doesnt work or you entered another area then there is a code issue. ping @Spencer2585 in the Elder Scrolls Online thread in the Archipelago After Dark Server and tell me the name of the area you entered.
