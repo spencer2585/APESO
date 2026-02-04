@@ -13,8 +13,8 @@ This mod requires the Archipelago software to generate and connect to the random
     -zone_quest_enabled: if you want zone quests to be locations in the randomizer
     -Wayshrine-checks-enabled: if you want descovering wayshrines to be locations in the randomizer
 
-[!Warning]
- if you turn off both wayshrine and zone quest checks you will have more items than locations and Archipelago will fail to generate a game
+> [!Warning]
+> if you turn off both wayshrine and zone quest checks you will have more items than locations and Archipelago will fail to generate a game
 
 3.) Generation: if you are generating the game then add you yaml to the players folder of your Archipelago install and run generate in the launcher, if someone else is generating the game you need to give them both eso.apworld and your yaml.
 
