@@ -2,7 +2,8 @@
 Get the latest version of APESO [here](https://github.com/spencer2585/APESO/releases/latest)
 This mod requires the Archipelago software to generate and connect to the randomizer, find the latest version and setup instructions for Archipelago [here](https://github.com/ArchipelagoMW/Archipelago)
 
-> [!Warning]: This mod is currently in very early beta. as such there are bound to be many bugs or issues. If you want to wait until things are more stable then i recommend waiting a few months so that the worst bugs are fixed and new features can be added to improve the experiance. More details on the current state of the mod can be found in the Elder Scrolls Online thread in the Archipelago After Dark Server
+> [!Warning]
+> This mod is currently in very early beta. as such there are bound to be many bugs or issues. If you want to wait until things are more stable then i recommend waiting a few months so that the worst bugs are fixed and new features can be added to improve the experiance. More details on the current state of the mod can be found in the Elder Scrolls Online thread in the Archipelago After Dark Server
 
 ## Setup
 1.) Add eso.apworld to you custom worlds in archipelago, this can be done by opening the file with the archipelago launcher or by adding it to the custom_worlds folder in your Archipelago Install
