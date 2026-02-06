@@ -6,6 +6,11 @@
                     APESO.ReloadUI()
                 </Down>
             </Action>
+            <Action name="TOGGLE_APSKILLS">
+                <Down>
+                    APESO.ToggleSkillsWindow()
+                </Down>
+            </Action>
         </Category>
     </Layer>
 </Bindings>
