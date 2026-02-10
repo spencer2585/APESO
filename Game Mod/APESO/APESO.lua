@@ -46,7 +46,6 @@ local MAIN_QUEST_STEPS = {
 }
 
 ZO_CreateStringId("SI_BINDING_NAME_RELOADUI", "Reload UI")
-ZO_CreateStringId("SI_BINDING_NAME_TOGGLE_APSKILLS", "Toggle AP Skills Window")
 
 APESO.name = "APESO"
 
@@ -72,9 +71,6 @@ function APESO.Initialize()
         APESO.savedVariables.NodeInfo = {}
     end
 
-    if not APESO.savedVariables.UnlockedSkills then
-        APESO.savedVariables.UnlockedSkills = {}
-    end
 
     EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_FAST_TRAVEL_NETWORK_UPDATED, APESO.CheckWaystones)
     EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_ZONE_CHANGED, APESO.OnZoneChanged)
@@ -135,10 +131,6 @@ function APESO.Initialize()
         if APESO.Debug then
             d("NPC: " .. tostring(name))
         end
-    end
-
-    SLASH_COMMANDS["/apskills"] = function()
-        APESO.ToggleSkillsWindow()
     end
 
     SLASH_COMMANDS["/fixquest"] = function(arg)
@@ -561,19 +553,4 @@ function APESO.ShowMainQuestBlockWarning()
             SetGameCameraUIMode(true)
         end,250)
     APESO.MainQuestBlockWindow:SetHidden(false)
-end
-
--- Called when options are updated from the server
-function APESO.OnOptionsUpdated()
-    -- Refresh the skills window if it exists and is visible
-    if APESO.SkillsWindow and not APESO.SkillsWindow:IsHidden() then
-        APESO.RefreshSkillsWindow()
-    end
-
-    if APESO.Debug then
-        d("APESO: Options updated from server")
-        d("  Skill Mode: " .. tostring(APESO_Options.SkillRandomization))
-        d("  Class: " .. tostring(APESO_Options.CharacterClass))
-        d("  Race: " .. tostring(APESO_Options.CharacterRace))
-    end
 end
