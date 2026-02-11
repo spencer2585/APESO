@@ -14,6 +14,10 @@ Right now there are settings to have completing zone quests, main story quests, 
 2.) Set up your yaml, the yaml can be found in the files in the latest release, by using Generate Template Options in the Archipelago launcher, or in the Options Creator also found in the Archipelago launcher. If you have chosen one of the first two options you must then open the yaml file in a text editor. The yaml contains all options for your game, options currently found in the yaml include
     -Name: what you want your slot in the randomizer to be named
     -Alliance: What allience you want you character to be a part of (Note: this does not force your character to be a part of that alliance during character creation, make sure your allience during character creation matches you yaml option or there will be issues)
+    -goal: what you want your goal to be, current options are completing the main quest or completing the final quest in a zones zone story
+    -zone_count: how many zones to include in the game, you can choose between 1 and 22 or have it set to 0 to include all of them. Generally the more zones you include the longer it will take to goal and the more checks the game may have
+    -included_zones: what zones to include. Leave blank to include all of them
+    -goal_zone: if your goal is zone_quest then this will be the zone you have to complete the final mission for. set to any for a random zone
     -zone_quest_enabled: if you want zone quests to be locations in the randomizer
     -Wayshrine-checks-enabled: if you want descovering wayshrines to be locations in the randomizer
 
@@ -26,9 +30,13 @@ Right now there are settings to have completing zone quests, main story quests, 
 
 5.) Find your eso mods folder: If you are on windows this is located in Documents/Elder Scrolls Online/live/AddOns. extract the mod zip into the AddOns folder so that there is a folder called APESO in the AddOns folder, make sure that when you open the APESO folder there is a APESO.lua file along with the other mod files.
 
+For Lenux and Mac users this folder is likely found in the steam library eso is installed in/compatdata/306130/pfx/drive_c/users/steamuser/Documents and from there it is the same as windows
+
 6.) Open ESO: you need to generate a APESO.lua file in live/savedVariables. Once the game is open make sure that the mod is enabled, this is done by going to the add-ons menu in the character select screen and ensureing there is a check in the box next to APESO. Next select a character and load into the game. Once this is done you can quit out of the game. If you wish you can check in live\SavedVariables to make sure there is an APESO.lua file inside. This only needs to be done once upon setup.
 
-7.) Connect with the client: The client can be found in the Archipelago Launcher and is included in the APWorld you installed earlier, once the client is open connect with the port, this will eather be given to you by the host or if you are hosting it can be found on the page for the game.
+7.) Connect with the client: The client can be found in the Archipelago Launcher and is included in the APWorld you installed earlier, once the client is open connect with the port, this will eather be given to you by the host or if you are hosting it can be found on the page for the game
+> [!IMPORTANT]
+> for non windows users, when you open the ESO client you will need to change your mod install directory. the command is /eso_path followed by the mod install folder. you want to point it to the live folder. The client will tell you if it can find the mod when you change folders..
 
 8.)Create you character and play: Once the client is connected you can create a new character in eso and start playing. An Important note about how this randomizer works 
 > [!IMPORTANT]
