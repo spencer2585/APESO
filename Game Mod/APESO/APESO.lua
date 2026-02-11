@@ -25,7 +25,7 @@ APESO.QuestEquivalences = QuestEquivalences
 -- Zone warning UI state
 APESO.WarningWindow = nil
 APESO.SuppressUntil = 0
-APESO.SuppressDuration = 300 -- seconds
+APESO.SuppressDuration = 5 -- seconds
 
 APESO.lastNpcName = nil
 APESO.lastCompassName = nil
