@@ -12,14 +12,14 @@ Right now there are settings to have completing zone quests, main story quests, 
 1.) Add eso.apworld to you custom worlds in archipelago, this can be done by opening the file with the archipelago launcher or by adding it to the custom_worlds folder in your Archipelago Install
 
 2.) Set up your yaml, the yaml can be found in the files in the latest release, by using Generate Template Options in the Archipelago launcher, or in the Options Creator also found in the Archipelago launcher. If you have chosen one of the first two options you must then open the yaml file in a text editor. The yaml contains all options for your game, options currently found in the yaml include
-    -Name: what you want your slot in the randomizer to be named  
-    -Alliance: What allience you want you character to be a part of (Note: this does not force your character to be a part of that alliance during character creation, make sure your allience during character creation matches you yaml option or there will be issues)  
-    -goal: what you want your goal to be, current options are completing the main quest or completing the final quest in a zones zone story  
-    -zone_count: how many zones to include in the game, you can choose between 1 and 22 or have it set to 0 to include all of them. Generally the more zones you include the longer it will take to goal and the more checks the game may have  
-    -included_zones: what zones to include. Leave blank to include all of them  
-    -goal_zone: if your goal is zone_quest then this will be the zone you have to complete the final mission for. set to any for a random zone  
-    -zone_quest_enabled: if you want zone quests to be locations in the randomizer  
-    -Wayshrine-checks-enabled: if you want descovering wayshrines to be locations in the randomizer  
+    - Name: what you want your slot in the randomizer to be named  
+    - Alliance: What allience you want you character to be a part of (Note: this does not force your character to be a part of that alliance during character creation, make sure your allience during character creation matches you yaml option or there will be issues)  
+    - goal: what you want your goal to be, current options are completing the main quest or completing the final quest in a zones zone story  
+    - zone_count: how many zones to include in the game, you can choose between 1 and 22 or have it set to 0 to include all of them. Generally the more zones you include the longer it will take to goal and the more checks the game may have  
+    - included_zones: what zones to include. Leave blank to include all of them  
+    - goal_zone: if your goal is zone_quest then this will be the zone you have to complete the final mission for. set to any for a random zone  
+    - zone_quest_enabled: if you want zone quests to be locations in the randomizer  
+    - Wayshrine-checks-enabled: if you want descovering wayshrines to be locations in the randomizer  
 
 > [!Warning]
 > if you turn off both wayshrine and zone quest checks you will have more items than locations and Archipelago will fail to generate a game
