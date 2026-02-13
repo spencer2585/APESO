@@ -30,13 +30,13 @@ Right now there are settings to have completing zone quests, main story quests, 
 
 5.) Find your eso mods folder: If you are on windows this is located in Documents/Elder Scrolls Online/live/AddOns. extract the mod zip into the AddOns folder so that there is a folder called APESO in the AddOns folder, make sure that when you open the APESO folder there is a APESO.lua file along with the other mod files.
 
-For Lenux and Mac users this folder is likely found in the steam library eso is installed in/compatdata/306130/pfx/drive_c/users/steamuser/Documents and from there it is the same as windows
+For Lenux and Mac users this folder is likely found in the steam library eso is installed in/compatdata/306130/pfx/drive_c/users/steamuser/Documents, and from there it is the same as windows
 
 6.) Open ESO: you need to generate a APESO.lua file in live/savedVariables. Once the game is open make sure that the mod is enabled, this is done by going to the add-ons menu in the character select screen and ensureing there is a check in the box next to APESO. Next select a character and load into the game. Once this is done you can quit out of the game. If you wish you can check in live\SavedVariables to make sure there is an APESO.lua file inside. This only needs to be done once upon setup.
 
 7.) Connect with the client: The client can be found in the Archipelago Launcher and is included in the APWorld you installed earlier, once the client is open connect with the port, this will eather be given to you by the host or if you are hosting it can be found on the page for the game
 > [!IMPORTANT]
-> for non windows users, when you open the ESO client you will need to change your mod install directory. the command is /eso_path followed by the mod install folder. you want to point it to the live folder. The client will tell you if it can find the mod when you change folders..
+> for non windows users, you will need to change your mod install directory. you can do this by changing the mods_folder under eso_options in host.yaml which can be opened from you archipelago install or by using  open host.yaml in the archipelago launcher. If you do not see the option make sure you have opened the archipelago launcher after installing eso.apworld. you want to point it to the Elder Scrolls Online folder which contains the live folder. **DO NOT POINT IT AT THE LIVE FOLDER**. The client will tell you if it can find the mod when you start it.
 
 8.)Create you character and play: Once the client is connected you can create a new character in eso and start playing. An Important note about how this randomizer works 
 > [!IMPORTANT]
@@ -54,3 +54,6 @@ For Lenux and Mac users this folder is likely found in the steam library eso is 
 ### I entered an area and now i have a message saying i do not have access to the area:
 If you entered one of the major zones like Glenumbra or Auridon then make sure you have recived that zones access item from the randomizer. If you have and are still getting the warning then click the reloadUI button on the warning to trigger a reloadUI event and sync your items with the server.
 If that doesnt work or you entered another area then there is a code issue. ping @Spencer2585 in the Elder Scrolls Online thread in the Archipelago After Dark Server and tell me the name of the area you entered.
+
+## The client is saying it cannot find my mods folder
+This is likely because your mods folder is different on your computer. Make sure you have the mod installed and that it shows up in the in-game addons menu. Then you can copy the filepath to the mods folder. You want to point it to the Elder Scrolls Online folder. For example, if your mods are in documents\Elder Scrolls Online\live\AddOns, then you want to set your path in host.yaml to documents\Elder Scrolls Online. The client will then find the mod and saved variables files in the folder and connect to them
