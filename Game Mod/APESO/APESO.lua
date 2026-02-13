@@ -159,12 +159,14 @@ function APESO.Initialize()
 
         if APESO.QuestEquivalences and APESO.QuestEquivalences[questId] then
             for _, linkedQuest in ipairs(APESO.QuestEquivalences[questId]) do
-                d("yahoo")
                 charTable[linkedQuest] = true
             end
         end
 
         d(string.format("|c00FF00APESO: Quest %d (%s) has been manually marked complete.|r", questId, name))
+    end
+    SLASH_COMMANDS["/getcoords"] = function()
+        APESO.getPlayerCoordinates()
     end
 
     APESO.Blocker, APESO.WarningWindow = APESO.UI.CreateWarningWindow()
@@ -285,6 +287,22 @@ function APESO.CheckZone()
         return
     end
 
+    local alliance = GetUnitAlliance("player")
+
+    if zoneId == 537 and alliance == ALLIANCE_ALDMERI_DOMINION then
+        d("|cFF0000Starting zone should not be locked but is, check to see if the client is connected|r")
+        return
+    end
+    if zoneId == 280 and alliance == ALLIANCE_EBONHEART_PACT then
+        d("|cFF0000Starting zone should not be locked but is, check to see if the client is connected|r")
+        return
+    end
+    if zoneId == 534 and alliance == ALLIANCE_DAGGERFALL_COVENANT then
+        d("|cFF0000Starting zone should not be locked but is, check to see if the client is connected|r")
+        return
+    end
+
+    APESO.TeleportToStarterZone()
     APESO.ShowZoneWarning()
 
 end
@@ -553,4 +571,8 @@ function APESO.ShowMainQuestBlockWarning()
             SetGameCameraUIMode(true)
         end,250)
     APESO.MainQuestBlockWindow:SetHidden(false)
+end
+
+function APESO.getPlayerCoordinates()
+    d( GetUnitRawWorldPosition("player"))
 end
