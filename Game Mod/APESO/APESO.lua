@@ -576,3 +576,29 @@ end
 function APESO.getPlayerCoordinates()
     d( GetUnitRawWorldPosition("player"))
 end
+
+function APESO.IsInRange(obX, obY, obZ)
+    local x, y, z = GetUnitRawWorldPosition("player")
+
+    local xDiff = obX - x
+    local yDiff = obY - y
+    local zDiff = obZ - z
+    if xDiff < 0 then
+        xDiff = xDiff * -1
+    end
+
+    if yDiff < 0 then
+        yDiff = yDiff * -1
+    end
+
+    if zDiff < 0 then
+        zDiff = zDiff * -1
+    end
+
+    local totalDiff = math.sqrt((xDiff * xDiff) + (zDiff*zDiff))
+
+    if totalDiff > 500 or yDiff > 200 then
+        return false
+    else
+        return true
+    end

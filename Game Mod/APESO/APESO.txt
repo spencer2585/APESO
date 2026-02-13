@@ -8,6 +8,7 @@ APESO_QuestEquivalences.lua
 APESO_SkillData.lua
 IgnoreZones.lua
 Options.lua
+data/coordinateTable.lua
 APESO.lua
 UI/DebugOverlay.lua
 UI/WarningWindow.lua
