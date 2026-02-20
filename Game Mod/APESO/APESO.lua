@@ -1,6 +1,6 @@
 APESO = APESO or {}
 
-APESO.Debug = false
+APESO.Debug = true
 
 local NPCLocks = APESO_NPCLocks or {}
 local QuestEquivalences = APESO_QuestEquivalences or {}
@@ -71,6 +71,14 @@ function APESO.Initialize()
         APESO.savedVariables.NodeInfo = {}
     end
 
+    if not APESO.savedVariables.delveClears then
+        APESO.savedVariables.delveClears = {}
+    end
+
+    if not APESO.savedVariables.BossKills then
+        APESO.savedVariables.BossKills = {}
+    end
+
 
     EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_FAST_TRAVEL_NETWORK_UPDATED, APESO.CheckWaystones)
     EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_ZONE_CHANGED, APESO.OnZoneChanged)
@@ -79,7 +87,10 @@ function APESO.Initialize()
     EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_QUEST_REMOVED, APESO.OnQuestRemoved)
     EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_RETICLE_TARGET_CHANGED, APESO.OnReticleTargetChanged)
     EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_CHATTER_BEGIN, APESO.OnChatterBegin)
-    EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_CLIENT_INTERACT_RESULT,APESO.OnInteract)
+    EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_CLIENT_INTERACT_RESULT, APESO.OnInteract)
+    EVENT_MANAGER:RegisterForEvent (APESO.name, EVENT_COMBAT_EVENT , APESO.CombatUpdate)
+    --most consistant way to track enemy death
+    EVENT_MANAGER:AddFilterForEvent(APESO.name, EVENT_COMBAT_EVENT, REGISTER_FILTER_COMBAT_RESULT, ACTION_RESULT_DIED_XP)
     EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_CHATTER_END, function()
 
         
@@ -131,6 +142,11 @@ function APESO.Initialize()
         if APESO.Debug then
             d("NPC: " .. tostring(name))
         end
+    end
+
+    SLASH_COMMANDS["/resetdata"] = function()
+        APESO.ResetData()
+        d("Checked Locations data reset")
     end
 
     SLASH_COMMANDS["/fixquest"] = function(arg)
@@ -390,6 +406,9 @@ end
 function APESO.OnPlayerActivated()
     APESO.RebuildZoneAccess()
     APESO.CheckZone()
+    if APESO.savedVariables.CharID ~= GetCurrentCharacterId() then
+        APESO.ResetData()
+    end
     APESO.savedVariables.CharID = GetCurrentCharacterId()
 end
 
@@ -480,6 +499,12 @@ end
 function APESO.OnInteract()
     local actionName, name = GetGameCameraInteractableActionInfo()
     --Main Quest Lock
+    if APESO_ZoneDoors[name] then
+        if not APESO.savedVariables.ZoneAccess[APESO_ZoneDoors[name]] then
+            EndInteraction(INTERACTION_NONE)
+        end
+    end
+
     if name == "The Harborage" or name == "Portal to Coldharbour" or name == "Portal to Alliance Capital" or name == "Portal to Stirk" then
         local questStep = APESO.GetMainQuestStep()
         local itemCount = APESO.CountProgressiveMainQuest()
@@ -602,3 +627,41 @@ function APESO.IsInRange(obX, obY, obZ)
     else
         return true
     end
+end
+
+
+function APESO.CombatUpdate(eventCode, result, isError, abilityName, abilityGraphic, abilitySlotType, sourceName, sourceType, targetName, targetType, hitValue, powerType, damageType, log, sourceUnitId, TargetUnitID, abilityId, overflow)
+    -- if action result is xp gained (most consistant way to track enemy death)
+    --check if target name is in 
+    regionid = APESO.GetCurrentRegionId()
+    if APESO_DelveData[regionid] then
+        --check if targetName is in bosses
+        for _, v in ipairs(APESO_DelveData[regionid].bosses) do
+            if v == targetName then
+                APESO.savedVariables.BossKills[targetName] = true
+                d("|c00FF00Boss Tracked|r")
+                break
+            end
+        end
+
+        --Check if all bosses Dead
+        APESO.savedVariables.delveClears[APESO_DelveData[regionid].locationId] = APESO.CheckDelve(regionid)
+    end
+end
+
+function APESO.CheckDelve(regionid)
+    for _, bossname in ipairs(APESO_DelveData[regionid].bosses) do
+        if not APESO.savedVariables.BossKills[bossname] then
+            return false
+        end
+    end
+    if not APESO.savedVariables.delveClears[APESO_DelveData[regionid].locationId] then
+        d("|c00FF00Dungeon Tracked|r")
+    end
+    return true
+end
+
+function APESO.ResetData()
+    APESO.savedVariables.BossKills = {}
+    APESO.savedVariables.delveClears = {}
+end

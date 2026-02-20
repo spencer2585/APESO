@@ -4,16 +4,16 @@
 
 
 
-APESO_QuestEquivalences.lua
-APESO_SkillData.lua
-IgnoreZones.lua
+Data/APESO_QuestEquivalences.lua
+Data/APESO_SkillData.lua
+Data/DelveData.lua
+Data/IgnoreZones.lua
+Data/ZoneDoors.lua
 Options.lua
-data/coordinateTable.lua
 APESO.lua
 UI/DebugOverlay.lua
 UI/WarningWindow.lua
 UI/MainQuestBlockWindow.lua
-UI/SkillsWindow.lua
 Items.lua
 Bindings.xml
 APESO_NPCLocks.lua
