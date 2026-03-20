@@ -15,3 +15,9 @@ APESO.RegionUnlockBaseID = 150000
 APESO.GoldIncrease = 0
 APESO.ProgressiveMainQuest = 0
 APESO.ZoneAccess = {}
+
+APESO.seed = 0
+APESO.currentSeedData = {}
+
+APESO.savedVariables = {}
+APESO.seed = 0

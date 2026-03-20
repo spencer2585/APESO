@@ -3,8 +3,10 @@ APESO = APESO or {}
 
 --Initilize the mod
 function APESO.Initialize()
-    --create savedVariables to store location data for client to read
     APESO.savedVariables = ZO_SavedVars:NewAccountWide("APESOCheckedLocations",1,nil,APESO.Default)
+    --create savedVariables to store location data for client to read
+    APESO.CharId = GetCurrentCharacterId()
+    APESO.seed = APESOHelpers.GetOption("seed")
     
     --register all events (found in Events.lua)
     APESOEvents.RegisterEvents()
@@ -15,8 +17,24 @@ function APESO.Initialize()
     --process items
     APESO.ProcessItems()
 
+    APESOHooks.CreateHooks()
+
     --Create UI Menus
     APESO.UI.StartUI()
+
+    APESOHelpers.LockZone()
+
+    if not APESO.savedVariables[APESO.seed] then
+    APESO.savedVariables[APESO.seed] = {
+        NodeInfo = {},
+        delveClears = {},
+        BossKills = {},
+        CompletedQuests = {},
+    }
+end
+
+-- Point to current seed's data for easy access
+APESO.currentSeedData = APESO.savedVariables[currentSeed]
 end
 
 --called when the addon is loaded

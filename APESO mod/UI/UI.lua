@@ -31,5 +31,5 @@ function APESO.UI.SuppressZoneWarning()
         suppressTime = 180000
     end
     APESO.UI.HideZoneWarning()
-    zo_callLater(function() APESO.UI.ShowZoneWarning() end, suppressTime)
+    zo_callLater(function() APESOHelpers.LockZone() end, suppressTime)
 end

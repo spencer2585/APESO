@@ -3,15 +3,25 @@
 ## SavedVariables: APESOCheckedLocations
 
 Data/ZoneData.lua
+Data/MainQuests.lua
+Data/TravelNPCs.lua
+Data/ExtraInteractBlocks.lua
+Data/DelveData.lua
+Data/QuestEquivalences.lua
 
 Globals.lua
 Options.lua
 Items.lua
 Helpers.lua
+Locations.Lua
 
 UI/WarningWindow.lua
 UI/UI.lua
 
 Events.lua
 Commands.lua
+Hooks.lua
+
+Bindings.xml
+
 APESO.lua
