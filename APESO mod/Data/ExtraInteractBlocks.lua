@@ -1,5 +1,5 @@
 APESO_ExtraInteractBlocks = {
-    ["Boat to Davons Watch"] = {
+    ["Boat to Davon's Watch"] = {
         itemType = "zone", requiredItem = 41
     },
     ["Boat to Daggerfall"] = {
@@ -40,7 +40,7 @@ APESO_ExtraInteractBlocks = {
     },
     ["Vastyr"] = {
         itemType = "zone", requiredItem = 1383
-    }
+    },
     ["Boat to Vulkhel Guard"] = {
         itemType = "zone", requiredItem = 381
     },

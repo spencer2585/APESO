@@ -10,14 +10,11 @@ function APESOEvents.RegisterEvents()
     EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_COMBAT_EVENT, APESOEvents.EventCombatEvent)
     EVENT_MANAGER:AddFilterForEvent(APESO.name, EVENT_COMBAT_EVENT, REGISTER_FILTER_COMBAT_RESULT, ACTION_RESULT_DIED_XP)
     EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_START_FAST_TRAVEL_INTERACTION, APESOEvents.EventFastTravelInteraction)
+    EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_QUEST_REMOVED, APESOEvents.OnQuestRemoved)
 end
 
 function APESOEvents.EventPlayerActivated()
     APESOHelpers.LockZone()
-end
-
-function APESOEvents.EventPoisInitialized()
-    d("[APESO DEBUG] POIs initialized")
 end
 
 function APESOEvents.EventClientInteractResult(_, result, targetName)
@@ -43,8 +40,17 @@ function APESOEvents.EventQuestComplete(_, questName, level, previousXP, current
     end
 end
 
+function APESOEvents.OnQuestRemoved(_, isCompleted, journalIndex, questName, zoneIndex, poiIndex, questId)
+    if isCompleted then
+        APESOLocations.MarkQuestComplete(questId)
+    end
+end
+
 function APESOEvents.EventCombatEvent(_, result, isError, abilityName, abilityGraphic, abilitySlotType, sourceName, sourceType, targetName, targetType, hitValue, powerType, damageType, log, sourceUnitId, TargetUnitId, abilityId, overflow)
     if result == ACTION_RESULT_DIED_XP then
+        if APESO.DebugMode then
+        d("Killed Enemy " .. targetName)
+        end
         APESOLocations.CheckKilledEnemy(targetName)
     end
 end

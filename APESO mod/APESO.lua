@@ -23,7 +23,9 @@ function APESO.Initialize()
     APESO.UI.StartUI()
 
     APESOHelpers.LockZone()
-
+    
+    APESO.savedVariables["char_id"] = APESO.CharId
+    
     if not APESO.savedVariables[APESO.seed] then
     APESO.savedVariables[APESO.seed] = {
         NodeInfo = {},

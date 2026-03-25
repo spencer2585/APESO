@@ -21,7 +21,7 @@ end
 
 --return the value of the option in the options table
 function APESOHelpers.GetOption(option)
-    if APESO_options[option] ~= nil then
+    if APESO_options[option] then
         return APESO_options[option]
     --error
     else
@@ -65,6 +65,7 @@ function APESOHelpers.CheckInteraction(targetName)
             --if the zone is a delve and delves are enabled then check if the player has access to that delve
             if APESO_ZoneData[id].type == "delve" and APESOHelpers.GetOption("delves_per_region") > 0 then
                 if not APESOHelpers.CheckZoneAccess(id) then
+                    d("[Archipelago]: You don't have the access item for that delve")
                     EndInteraction(INTERACTION_NONE)
                     return
                 end
@@ -128,7 +129,6 @@ function APESOHelpers.GetGoldCap()
     if baseGoldCap == 0 then
         return "No Cap"
     end
-
     local totalCapacity = baseGoldCap + (APESO.GoldIncrease * 1000)
     return totalCapacity
 end

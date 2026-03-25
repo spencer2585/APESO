@@ -47,11 +47,7 @@ end
 
 function APESOHooks.RegisterLootHook()
     ZO_PreHook("LootCurrency", function(currencyType)
-        d("[APESO DEBUG] LootCurrency called - Type: " .. tostring(currencyType))
-        
         if currencyType == CURT_MONEY then
-            d("[APESO DEBUG] Looting gold!")
-            
             if APESOHelpers.IsOverGoldCap() then
                 d("[Archipelago] Cannot loot gold - capacity reached!")
                 return true  -- BLOCK
