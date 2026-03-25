@@ -24,7 +24,7 @@ end
 
 function APESOLocations.CheckKilledEnemy(targetName)
     local regionId = APESOHelpers.GetCurrentZoneId()
-    local cleanName = targetName.match("^(.-)%^") or tergetName
+    local cleanName = targetName:match("(.-)%^") or targetName
     
     if APESO.DebugMode then
         d("Killed Enemy " .. cleanName)

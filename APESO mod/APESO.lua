@@ -23,6 +23,8 @@ function APESO.Initialize()
     APESO.UI.StartUI()
 
     APESOHelpers.LockZone()
+
+    ZO_CreateStringId("SI_BINDING_NAME_RELOADUI", "Reload UI")
     
     APESO.savedVariables["char_id"] = APESO.CharId
     
