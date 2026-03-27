@@ -40,16 +40,13 @@ end
 function APESOHelpers.LockZone()
     APESO.UI.HideZoneWarning()
     local currZone = APESOHelpers.GetCurrentZone()
-    if not APESO_ZoneData[currZone] then
-        return
-    end
-    local zoneData = APESO_ZoneData[currZone]
-    
-    if zoneData.type == "delve" and APESOHelpers("delvesEnabled") == 1 then
+    if not APESO_ZoneData[currZone] then return end
+
+    if APESO_ZoneData[currZone].type == "delve" and APESOHelpers.GetOption("delvesEnabled") == 1 then
         if not APESO.CheckCurrentZone() then
             APESO.UI.ShowZoneWarning()
         end
-    elseif zoneData.type == "zone" and not APESOHelpers.CheckCurrentZone() then
+    elseif APESO_ZoneData[currZone].type == "zone" and not APESOHelpers.CheckCurrentZone() then
         APESO.UI.ShowZoneWarning()
     end
 end
