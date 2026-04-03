@@ -28,7 +28,7 @@ Right now there are settings to have completing zone quests, main story quests, 
 
 4.) If you generated the game: upload the zip created by generation to [Archipelago.gg](https://archipelago.gg/)
 
-5.) Find your ESO mods folder: If you are on Windows then this is likely located in Documents/Elder Scrolls Online/live/AddOns. extract the mod zip into the AddOns folder so that there is a folder called APESO in the AddOns folder, make sure that when you open the APESO folder there is a APESO.lua file along with the other mod files.
+5.) Find your ESO mods folder: If you are on Windows then this is likely located in Documents/Elder Scrolls Online/live/AddOns. extract the mod zip into the AddOns folder so that there is a folder called APESO in the AddOns folder, APESO.mod or any other name will not work. Make sure that when you open the APESO folder there is a APESO.lua file along with the other mod files.
 
 For Lenux and Mac users, this folder is likely found in the Steam library eso is installed in/compatdata/306130/pfx/drive_c/users/steamuser/Documents, and from there it is the same as windows.
 
