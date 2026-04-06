@@ -11,17 +11,19 @@ function APESOCommands.CreateCommands()
     SLASH_COMMANDS["/getcurrentgold"] = function() d(APESOHelpers.GetCurrentGold()) end
     SLASH_COMMANDS["/getgoldcap"] = function() d(APESOHelpers.GetGoldCap()) end
     SLASH_COMMANDS["/isovergoldcap"] = function() d(APESOHelpers.IsOverGoldCap()) end
+    SLASH_COMMANDS["/showapmenu"] = function() APESO.UI.ShowMenu() end
+    SLASH_COMMANDS["/hideapmenu"] = function() APESO.UI.HideMenu() end
 end
 
 --toggle debug mode
 function APESOCommands.ToggleDebugMode()
     --if debug mode is on then turn off
-    if APESO.DebugMode == true then
-        APESO.DebugMode = false
+    if APESO.savedVariables["Options"].DebugMode == true then
+        APESO.savedVariables["Options"].DebugMode = false
         d("debug mode disabled")
     --else turn debug mode on
     else
-        APESO.DebugMode = true
+        APESO.savedVariables["Options"].DebugMode = true
         d("debug mode enabled")
     end
 end

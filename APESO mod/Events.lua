@@ -48,7 +48,7 @@ end
 
 function APESOEvents.EventCombatEvent(_, result, isError, abilityName, abilityGraphic, abilitySlotType, sourceName, sourceType, targetName, targetType, hitValue, powerType, damageType, log, sourceUnitId, TargetUnitId, abilityId, overflow)
     if result == ACTION_RESULT_DIED_XP then
-        if APESO.DebugMode then
+        if APESO.savedVariables["Options"].DebugMode then
         d("Killed Enemy " .. targetName)
         end
         APESOLocations.CheckKilledEnemy(targetName)

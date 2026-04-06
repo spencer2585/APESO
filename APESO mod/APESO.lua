@@ -4,6 +4,7 @@ APESO = APESO or {}
 --Initilize the mod
 function APESO.Initialize()
     APESO.savedVariables = ZO_SavedVars:NewAccountWide("APESOCheckedLocations",1,nil,APESO.Default)
+    APESOHelpers.CreateSavedVariablesOptions()
     --create savedVariables to store location data for client to read
     APESO.CharId = GetCurrentCharacterId()
     APESO.seed = APESOHelpers.GetOption("seed")

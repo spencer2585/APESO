@@ -12,7 +12,7 @@ function APESOHooks.RegisterDialogueHook()
         local npcName = GetUnitName("interact")
         local dialogueText = GetChatterOption(optionIndex)
 
-        if APESO.DebugMode then
+        if APESO.savedVariables["Options"].DebugMode then
             d("Interacting with NPC: " .. npcName)
             d("Selected dialogue option: " .. dialogueText)
         end

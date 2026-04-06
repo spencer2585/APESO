@@ -1,5 +1,5 @@
 ## Title: APESO
-## APIVersion: 101048
+## APIVersion: 101049
 ## SavedVariables: APESOCheckedLocations
 
 Data/ZoneData.lua
@@ -13,9 +13,10 @@ Globals.lua
 Options.lua
 Items.lua
 Helpers.lua
-Locations.Lua
+Locations.lua
 
 UI/WarningWindow.lua
+UI/Menu.lua
 UI/UI.lua
 
 Events.lua

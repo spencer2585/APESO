@@ -1,11 +1,15 @@
 APESO.UI = APESO.UI or {}
 
-APESO.UI.zoneWarningWindow, APESO.UI.blocker = APESO.UI.CreateWarningWindow()
+APESO.UI.zoneWarningWindow, APESO.UI.blocker = nil
+APESO.UI.menu = nil
 
 --create all UI
 function APESO.UI.StartUI()
+    APESO.UI.menu = APESO.UI.CreateMenu()
+    APESO.UI.zoneWarningWindow, APESO.UI.blocker = APESO.UI.CreateWarningWindow()
     APESO.UI.blocker:SetHidden(true)
     APESO.UI.zoneWarningWindow:SetHidden(true)
+    APESO.UI.menu:SetHidden(true)
 end
 
 --show zone warning window
@@ -32,4 +36,14 @@ function APESO.UI.SuppressZoneWarning()
     end
     APESO.UI.HideZoneWarning()
     zo_callLater(function() APESOHelpers.LockZone() end, suppressTime)
+end
+
+function APESO.UI.ShowMenu()
+    APESO.UI.menu:SetHidden(false)
+    zo_callLater(function() SetGameCameraUIMode(true) end, 500)
+end
+
+function APESO.UI.HideMenu()
+    APESO.UI.menu:SetHidden(true)
+    zo_callLater(function() SetGameCameraUIMode(false) end, 500)
 end

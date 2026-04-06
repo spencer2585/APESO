@@ -3,9 +3,6 @@ APESO = APESO or {}
 
 APESO.name = "APESO"
 
---if debug mode is toggled on or off
-APESO.DebugMode = false
-
 --Item Type Ids/BaseIds
 APESO.GoldIncreaseID = 149994
 APESO.MainQuestID = 149996
@@ -19,5 +16,5 @@ APESO.ZoneAccess = {}
 APESO.seed = 0
 APESO.currentSeedData = {}
 
-APESO.savedVariables = {}
+APESO.savedVariables = ZO_SavedVars:NewAccountWide("APESOCheckedLocations",1,nil,APESO.Default)
 APESO.seed = 0

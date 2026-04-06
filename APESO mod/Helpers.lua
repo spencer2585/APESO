@@ -26,7 +26,7 @@ function APESOHelpers.GetOption(option)
     --error
     else
         --if debug mode is on then print error
-        if APESO.DebugMode then
+        if APESO.savedVariables["Options"].DebugMode then
             d("Option ".. option .. " does not exist")
         end
         return 0
@@ -100,7 +100,7 @@ end
 function APESOHelpers.CheckNPCName()
     local npcName = GetUnitName("interact")
     
-    if APESO.DebugMode then
+    if APESO.savedVariables["Options"].DebugMode then
         d("Interacting with NPC: " .. npcName)
     end 
 
@@ -141,4 +141,13 @@ end
 
 function APESOHelpers.ReloadUI()
     ReloadUI()
+end
+
+function APESOHelpers.CreateSavedVariablesOptions()
+    if not APESO.savedVariables["Options"] then
+        APESO.savedVariables["Options"] = {
+            DebugMode = false,
+            reloadOnCheck = true,
+        }
+    end
 end
