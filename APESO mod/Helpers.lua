@@ -151,3 +151,10 @@ function APESOHelpers.CreateSavedVariablesOptions()
         }
     end
 end
+
+function APESOHelpers.ReloadOutOfCombat()
+    if not IsUnitInCombat("Player") then
+        reloadUI()
+    else
+        d("Could not reloadUI, Player is in combat. Run /ReloadUI when safe to send location")    
+end
