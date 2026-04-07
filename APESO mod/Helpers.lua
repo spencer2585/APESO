@@ -33,13 +33,9 @@ function APESOHelpers.GetOption(option)
     end
 end
 
-function APESOHelpers.GetCurrentZone()
-    return GetUnitZoneIndex("player")
-end
-
 function APESOHelpers.LockZone()
     APESO.UI.HideZoneWarning()
-    local currZone = APESOHelpers.GetCurrentZone()
+    local currZone = APESOHelpers.GetCurrentZoneId()
     if not APESO_ZoneData[currZone] then return end
 
     if APESO_ZoneData[currZone].type == "delve" and APESOHelpers.GetOption("delvesEnabled") == 1 then
