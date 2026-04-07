@@ -35,7 +35,7 @@ function APESO.UI.CreateMenu()
 
     local closeButton = wm:CreateControlFromVirtual(nil, closeContainer, "ZO_DefaultButton")
     closeButton:SetAnchor(TOPRIGHT, closeContainer, TOPRIGHT,0,0)
-    closeButton:SetAnchor(BOTTOMRIGHT, closeContainer, BOTTOMRIGHT,10,10)
+    closeButton:SetAnchor(BOTTOMRIGHT, closeContainer, BOTTOMRIGHT,-10,-10)
     closeButton:SetWidth(120)
     closeButton:SetText("Close Menu")
     closeButton:SetHandler("OnClicked", function() menu:SetHidden(true) SetGameCameraUIMode(false) end)
