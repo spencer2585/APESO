@@ -28,6 +28,8 @@ function APESO.Initialize()
     ZO_CreateStringId("SI_BINDING_NAME_RELOADUI", "Reload UI")
     
     APESO.savedVariables["char_id"] = APESO.CharId
+
+    zo_callLater(function() APESOHelpers.CheckAlliance() end, 8000)
     
     if not APESO.savedVariables[APESO.seed] then
     APESO.savedVariables[APESO.seed] = {
@@ -36,6 +38,7 @@ function APESO.Initialize()
         BossKills = {},
         CompletedQuests = {},
     }
+
 end
 
 -- Point to current seed's data for easy access

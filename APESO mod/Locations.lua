@@ -6,13 +6,13 @@ end
 function APESOLocations.SendWayshrine(nodeId)
     if not APESO.savedVariables[APESO.seed].NodeInfo[nodeId] then
         APESO.savedVariables[APESO.seed].NodeInfo[nodeId] = true
-        APESOHelpers.ReloadOutOfCombat()
+        d("|c00FF00Wayshrine complete, reloadUI to send location|r")
     end
 end
 
 function APESOLocations.MarkQuestComplete(questId)
     if not APESO.savedVariables[APESO.seed].CompletedQuests[questId] then
-        APESOHelpers.ReloadOutOfCombat()
+        d("|c00FF00Quest complete, reloadUI to send location|r")
     end
     APESO.savedVariables[APESO.seed].CompletedQuests[questId] = true
     if APESO_QuestEquivalances and APESO_QuestEquivalances[questId] then
@@ -48,7 +48,7 @@ function APESOLocations.CheckDelve(regionId)
                 return false
             end
         end
-        APESOHelpers.ReloadOutOfCombat()
+        d("|c00FF00Delve complete, reloadUI to send location|r")
     end
     return true
 end

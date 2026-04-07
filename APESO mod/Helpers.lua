@@ -157,4 +157,18 @@ function APESOHelpers.ReloadOutOfCombat()
         reloadUI()
     else
         d("Could not reloadUI, Player is in combat. Run /ReloadUI when safe to send location")    
+    end
+end
+
+function APESOHelpers.CheckAlliance()
+    charAlliance = GetUnitAlliance("player")
+    apAlliance = APESOHelpers.GetOption("alliance")
+
+    if apAlliance == 0 and charAlliance ~=1 then
+        d("|cFF0000Incorrect Character Alliance, your selected AP alliance is Aldmeri Dominion|r")
+    elseif apAlliance == 1 and charAlliance ~= 3 then
+        d("|cFF0000Incorrect Character Alliance, your selected AP alliance is Daggerfall Covenent|r")
+    elseif apAlliance == 2 and charAlliance ~= 2 then
+        d("|cFF0000Incorrect Character Alliance, your selected AP alliance is  Ebonheart Pact|r")
+    end
 end

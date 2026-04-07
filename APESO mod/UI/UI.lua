@@ -40,6 +40,7 @@ end
 
 function APESO.UI.ShowMenu()
     APESO.UI.menu:SetHidden(false)
+    APESOHelpers.CheckAlliance()
     zo_callLater(function() SetGameCameraUIMode(true) end, 500)
 end
 
