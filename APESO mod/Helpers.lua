@@ -149,10 +149,12 @@ function APESOHelpers.CreateSavedVariablesOptions()
 end
 
 function APESOHelpers.ReloadOutOfCombat()
-    if not IsUnitInCombat("Player") then
-        reloadUI()
-    else
-        d("Could not reloadUI, Player is in combat. Run /ReloadUI when safe to send location")    
+    if APESO.savedVariables["Options"].reloadOnCheck then
+        if not IsUnitInCombat("Player") then
+            reloadUI()
+        else
+            d("Could not reloadUI, Player is in combat. Run /ReloadUI when safe to send location")    
+        end
     end
 end
 
@@ -167,4 +169,36 @@ function APESOHelpers.CheckAlliance()
     elseif apAlliance == 2 and charAlliance ~= 2 then
         d("|cFF0000Incorrect Character Alliance, your selected AP alliance is  Ebonheart Pact|r")
     end
+end
+
+function APESOHelpers.CheckIncludedWayshrines()
+    if APESOHelpers.GetOption("wayshrine_checks_enabled") == 1 then
+        local zoneId = APESOHelpers.GetCurrentZoneId()
+        if APESO_ZoneData[zoneId] then
+            local zoneName = APESO_ZoneData[zoneId].name
+            local includedZones = APESOHelpers.GetOption("selected_zones")
+            for i, zone in ipairs(includedZones) do
+                if zone == zoneName then
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+
+function APESOHelpers.CheckIncludedDelve()
+    if APESOHelpers.GetOption("delves_per_region") > 0 then
+        local zoneId = APESOHelpers.GetCurrentZoneId()
+        if APESO_ZoneData[zoneId] then
+            local zoneName = APESO_ZoneData[zoneId].name
+            local includedDelves = APESOHelpers.GetOption("selected_delves")
+            for i, zone in ipairs(includedDelves) do
+                if zone == zoneName then
+                    return true
+                end
+            end
+        end
+    end
+    return false
 end
