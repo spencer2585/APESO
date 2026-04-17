@@ -151,7 +151,7 @@ end
 function APESOHelpers.ReloadOutOfCombat()
     if APESO.savedVariables["Options"].reloadOnCheck then
         if not IsUnitInCombat("Player") then
-            reloadUI()
+            ReloadUI()
         else
             d("Could not reloadUI, Player is in combat. Run /ReloadUI when safe to send location")    
         end
