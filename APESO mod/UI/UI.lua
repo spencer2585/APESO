@@ -48,3 +48,8 @@ function APESO.UI.HideMenu()
     APESO.UI.menu:SetHidden(true)
     zo_callLater(function() SetGameCameraUIMode(false) end, 500)
 end
+
+function APESO.UI.ToggleMenu()
+    APESO.UI.menu:SetHidden(not APESO.UI.menu:IsHidden())
+    SetGameCameraUIMode(not IsGameCameraUIModeActive())
+end
