@@ -1,4 +1,5 @@
 ## Title: APESO
+## Author: |cEFEBBESpencer2585|r
 ## APIVersion: 101049
 ## SavedVariables: APESOCheckedLocations
 
