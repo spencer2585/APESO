@@ -9,16 +9,39 @@ function APESOLocations.SendWayshrine(nodeId)
             APESO.savedVariables[APESO.seed].NodeInfo[nodeId] = true
             APESOHelpers.ReloadOutOfCombat()
         end
+    end
 end
 
 function APESOLocations.MarkQuestComplete(questId)
-    if not APESO.savedVariables[APESO.seed].CompletedQuests[questId] then
-        APESOHelpers.ReloadOutOfCombat()
-    end
     APESO.savedVariables[APESO.seed].CompletedQuests[questId] = true
     if APESO_QuestEquivalances and APESO_QuestEquivalances[questId] then
         for _, linkedQuest in ipairs(APESO_QuestEquivalances[questId]) do
             APESO.savedVariables[APESO.seed].CompletedQuests[linkedQuest] = true
+        end
+    end
+    if APESO_QuestData[questId] then
+        local questData = APESO_QuestData[questId]
+        local includedZones = APESOHelpers.GetOption("selected_zones")
+        if questData.type == "zone" then
+            if APESOHelpers.GetOption("zone_quests_enabled")then
+                for _, zone in ipairs(includedZones) do
+                    if zone == questData.zone then
+                        if questData.addZone then
+                            for _, addzone in ipairs(includedZones) do
+                                if addzone == questData.addZone then
+                                    APESOHelpers.ReloadOutOfCombat()
+                                    return
+                                end
+                            end
+                        else
+                            APESOHelpers.ReloadOutOfCombat()
+                            return
+                        end
+                    end
+                end
+            end
+        elseif questData.type == "main" and APESOHelpers.GetOption("main_quests_enabled") then
+            APESOHelpers.ReloadOutOfCombat()
         end
     end
 end
