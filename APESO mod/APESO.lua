@@ -26,7 +26,8 @@ function APESO.Initialize()
     APESOHelpers.LockZone()
 
     ZO_CreateStringId("SI_BINDING_NAME_RELOADUI", "Reload UI")
-    
+    ZO_CreateStringId("SI_BINDING_NAME_OPENAPESOMENU", "Open AP Menu")
+
     APESO.savedVariables["char_id"] = APESO.CharId
 
     zo_callLater(function() APESOHelpers.CheckAlliance() end, 8000)

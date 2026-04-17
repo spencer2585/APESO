@@ -6,6 +6,12 @@
                     APESOHelpers.ReloadUI()
                 </Down>
             </Action>
+            <Action name="OPENAPESOMENU">
+                <Default>KEY_MINUS</Default>
+                <Down>
+                    APESO.UI.ToggleMenu()
+                </Down>
+            </Action>
         </Category>
     </Layer>
 </Bindings>
