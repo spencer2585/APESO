@@ -88,7 +88,7 @@ function APESOHelpers.GetMainQuestStep()
     for id in pairs(APESO_MainQuests) do
         local name = GetCompletedQuestInfo(APESO_MainQuests[id].Id)
         if name == "" then
-            return id-1
+            return id
         end
     end
 end
