@@ -55,9 +55,25 @@ function APESO.UI.CreateMenu()
     APESO.UI.menuTabs["Items"] = itemsContent
     APESO.UI.CreateItemsMenu(itemsContent, wm)
 
+    local apdataTab = wm:CreateControl(nil, tab, CT_LABEL)
+    apdataTab:SetDimensions(90,40)
+    apdataTab:SetAnchor(TOPLEFT, itemsTab, TOPRIGHT, 0, 0)
+    apdataTab:SetText("APData")
+    apdataTab:SetMouseEnabled(true)
+    apdataTab:SetFont("ZoFontWinH2")
+    apdataTab:SetColor(0.77254909276962, 0.7607843875885, 0.61960786581039, 1)
+    apdataTab:SetHandler("OnMouseUp", function() APESO.UI.SetMenuTab("APData") end)
+
+    local apdataContent = wm:CreateControl(nil, menu, CT_CONTROL)
+    apdataContent:SetAnchor(TOPLEFT, tab, BOTTOMLEFT, 0, 0)
+    apdataContent:SetAnchor(BOTTOMRIGHT, closeContainer, TOPRIGHT, 0, 0)
+    APESO.UI.menuTabs["APData"] = apdataContent
+    APESO.UI.CreateApdataMenu(apdataContent, wm)
+    apdataContent:SetHidden(true)
+
     local optionsTab = wm:CreateControl(nil, tab, CT_LABEL)
     optionsTab:SetDimensions(100,40)
-    optionsTab:SetAnchor(TOPLEFT, itemsTab, TOPRIGHT,0,0)
+    optionsTab:SetAnchor(TOPLEFT, apdataTab, TOPRIGHT,0,0)
     optionsTab:SetText("Options")
     optionsTab:SetMouseEnabled(true)
     optionsTab:SetFont("ZoFontWinH2")
@@ -237,4 +253,30 @@ end
 function APESO.UI.ToggleWayshrineItemsContainer(wayshrineItemsContainer)
     wayshrineItemsContainer:SetHidden(not wayshrineItemsContainer:IsHidden())
 end
+
+function APESO.UI.CreateApdataMenu(apdataContent, wm)
+    local allianceText = wm:CreateControl(nil, apdataContent, CT_LABEL)
+    if APESOHelpers.GetOption("alliance") == 0 then
+        allianceText:SetText("Alliance: Aldmeri Dominion")
+    elseif APESOHelpers.GetOption("alliance") == 1 then
+        allianceText:SetText("Alliance: Daggerfall Covenent")
+    else
+        allianceText:SetText("Alliance: Ebonheart Pact")
+    end
+    allianceText:SetAnchor(TOPLEFT, apdataContent, TOPLEFT, 20, 0)
+    allianceText:SetHeight(20)
+    allianceText:SetFont("ZoFontGame")
+
+    goalText = wm:CreateControl(nil, apdataContent, CT_LABEL)
+    if APESOHelpers.GetOption("goal") == 0 then
+        goalText:SetText("Goal: Main Quest")
+    elseif APESOHelpers.GetOption("goal") == 1 then
+        goalText:SetText("Goal: Final Zone Quest: ".. APESOHelpers.GetOption("goal_zone"))
+    else
+        goalText:SetText("Goal: Dungeon Delver")
+    end
+    goalText:SetAnchor(TOPLEFT, allianceText, BOTTOMLEFT, 0, 0)
+    goalText:SetHeight(20)
+    goalText:SetFont("ZoFontGame")
 end
+
