@@ -210,3 +210,17 @@ function APESOHelpers.CheckIncludedDelve()
     end
     return false
 end
+
+function APESOHelpers.GetZoneIdFromName(zoneName)
+    for id, data in ipairs(APESO_ZoneData) do
+        if data.name == zoneName then
+            return id
+        end
+    end
+    return 0
+end
+
+function APESOHelpers.GetWayshrineNameFromId(wayshrineId)
+    local _, name = GetFastTravelNodeInfo(wayshrineId)
+    return name
+end

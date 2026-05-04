@@ -78,6 +78,14 @@ function APESO.ProcessItems()
         --if progressive main quest then add to variable
         elseif item.item_id == APESO.MainQuestID then
             APESO.ProgressiveMainQuest = APESO.ProgressiveMainQuest + 1
+        
+        elseif item.item_id > APESO.WayshrineZoneOffset then
+            local id = item.item_id - APESO.WayshrineZoneOffset
+            APESO.WayshrineAccess[id] = true
+
+        elseif item.item_id > APESO.WayshrineOffset then
+            local id = item.item_id - APESO.WayshrineOffset
+            APESO.WayshrineAccess[id] = true
         end
     end
 end

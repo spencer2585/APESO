@@ -4,6 +4,7 @@ function APESOHooks.CreateHooks()
     APESOHooks.RegisterDialogueHook()
     APESOHooks.RegisterLootHook()
     APESOHooks.RegisterQuestCompleteHook()
+    APESOHooks.RegisterFastTravelHook()
 end
 
 
@@ -65,5 +66,42 @@ function APESOHooks.RegisterQuestCompleteHook()
             d("[Archipelago] Cannot complete quest - gold capacity reached!")
             return true  -- BLOCK
         end
+    end)
+end
+
+function APESOHooks.RegisterFastTravelHook()
+    ZO_PreHook("FastTravelToNode", function(nodeId)
+        _, wayshrineName = GetFastTravelNodeInfo(nodeId)
+        if not APESO_Wayshrines[wayshrineName] then
+            d("[APESO] Data Error - Blocking Teleport, Please report in the discord: Error on nodeId: "..nodeId)
+        end
+        zone = APESO_Wayshrines[wayshrineName].zone
+        zoneid = APESOHelpers.GetZoneIdFromName(zone)
+        if zoneid == 0 then
+            d("[APESO] Wayshrine not in the randomizer - blocking teleport")
+            return true
+        end
+        if APESOHelpers.CheckZoneAccess(zoneid) then
+            -- Zone is Unlocked check for item
+            wayshrineLocking = APESOHelpers.getOption("wayshrine_locking")
+            if wayshrineLocking == 2 then
+                if APESO.WayshrineAccess[nodeId] then
+                    return false
+                else
+                    return true
+                end
+            elseif wayshrineLocking == 1 then
+                if APESO.WayshrineAccess[zoneid] then
+                    return false
+                else
+                    return true
+                end
+            else
+                return false
+            end
+        else
+            return true
+        end
+        return true
     end)
 end

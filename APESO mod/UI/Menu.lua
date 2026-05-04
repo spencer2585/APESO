@@ -156,6 +156,17 @@ function APESO.UI.CreateItemsMenu(itemsContent, wm)
     delveItemsContainer:SetAnchor(TOPLEFT, delveItemsDropdown, BOTTOMLEFT, 20, 0)
     local delveHeight = 0
 
+    local wayshrineItemsDropdown = wm:CreateControl(nil,scrollChild,CT_LABEL)
+    wayshrineItemsDropdown:SetHeight(20)
+    wayshrineItemsDropdown:SetAnchor(TOPLEFT, delveItemsDropdown, BOTTOMLEFT, 0, 0)
+    wayshrineItemsDropdown:SetText("Wayshrine Acess Items (Click to toggle visibility)")
+    wayshrineItemsDropdown:SetFont("ZoFontGameBold")
+    wayshrineItemsDropdown:SetColor(0.77254909276962, 0.7607843875885, 0.61960786581039, 1)
+    wayshrineItemsDropdown:SetMouseEnabled(true)
+    local wayshrineItemsContainer = wm:CreateControl(nil,scrollChild,CT_CONTROL)
+    wayshrineItemsContainer:SetAnchor(TOPLEFT, wayshrineItemsDropdown, BOTTOMLEFT, 20, 0)
+    local wayshrineHeight = 0
+
     for id, _ in pairs(APESO.ZoneAccess) do
         zoneData = APESO_ZoneData[id]
         local zoneItem = nil
@@ -171,15 +182,34 @@ function APESO.UI.CreateItemsMenu(itemsContent, wm)
         zoneItem:SetHeight(20)
         zoneItem:SetText(zoneData.name.." Access")
         zoneItem:SetFont("ZoFontGame")
-        
     end
+
+    for id, _ in pairs(APESO.WayshrineAccess) do
+        wayshrineItem = wm:CreateControl(nil, wayshrineItemsContainer, CT_LABEL)
+        wayshrineItem:SetAnchor(TOPLEFT, wayshrineItemsContainer, TOPLEFT, 0, WayshrineHeight)
+        wayshrineHeight = wayshrineHeight + 20
+        wayshrineItem:SetHeight(20)
+        wayshrineItem:SetFont("ZoFontGame")   
+        if APESOHelpers.GetOption("wayshrine_locking") == 1 then
+            local zoneData = APESO_ZoneData[id]
+            wayshrineItem:SetText(zoneData.name.." Wayshrines Unlocked")
+        else
+            local wayshrineName = APESOHelpers.GetWayshrineNameFromId(id)
+            wayshrineItem:SetText(wayshrineName.." Unlocked")
+        end         
+    end
+
     zoneItemsContainer:SetHeight(zoneHeight)
     zoneItemsContainer:SetHidden(true)
     zoneItemsDropdown:SetHandler("OnMouseUp",function() APESO.UI.ToggleZoneItemsContainer(zoneItemsContainer, delveItemsDropdown, zoneItemsDropdown) end)
 
     delveItemsContainer:SetHeight(delveHeight)
     delveItemsContainer:SetHidden(true)
-    delveItemsDropdown:SetHandler("OnMouseUp",function() APESO.UI.ToggleDelveItemsContainer(delveItemsContainer) end)
+    delveItemsDropdown:SetHandler("OnMouseUp",function() APESO.UI.ToggleDelveItemsContainer(delveItemsContainer, wayshrineItemsDropdown, delveItemsDropdown) end)
+
+    wayshrineItemsContainer:SetHeight(wayshrineHeight)
+    wayshrineItemsContainer:SetHidden(true)
+    wayshrineItemsDropdown:SetHandler("OnMouseUp",function() APESO.UI.ToggleWayshrineItemsContainer(wayshrineItemsContainer) end)
 end
 
 function APESO.UI.ToggleZoneItemsContainer(zoneItemsContainer, delveItemsDropdown, zoneItemsDropdown)
@@ -193,6 +223,18 @@ function APESO.UI.ToggleZoneItemsContainer(zoneItemsContainer, delveItemsDropdow
     end
 end
 
-function APESO.UI.ToggleDelveItemsContainer(delveItemsContainer)
-    delveItemsContainer:SetHidden(not delveItemsContainer:IsHidden())
+function APESO.UI.ToggleDelveItemsContainer(delveItemsContainer, wayshrineItemsDropdown, delveItemsDropdown)
+    wayshrineItemsDropdown:ClearAnchors()
+    if delveItemsContainer:IsHidden() then
+        wayshrineItemsDropdown:SetAnchor(TOPLEFT, delveItemsContainer, BOTTOMLEFT, -20, 0)
+        delveItemsContainer:SetHidden(false)
+    else
+        wayshrineItemsDropdown:SetAnchor(TOPLEFT, delveItemsDropdown, BOTTOMLEFT, 0, 0)
+        delveItemsContainer:SetHidden(true)
+    end
+end
+
+function APESO.UI.ToggleWayshrineItemsContainer(wayshrineItemsContainer)
+    wayshrineItemsContainer:SetHidden(not wayshrineItemsContainer:IsHidden())
+end
 end
