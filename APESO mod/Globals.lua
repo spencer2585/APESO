@@ -7,6 +7,7 @@ APESO.name = "APESO"
 APESO.GoldIncreaseID = 149994
 APESO.MainQuestID = 149996
 APESO.RegionUnlockBaseID = 150000
+APESO.UnlimitedWalletID = 149997
 
 --recived Items
 APESO.GoldIncrease = 0
