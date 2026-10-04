@@ -1,2 +1,0 @@
-APESO_ReceivedItems = {
-}
