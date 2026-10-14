@@ -1,5 +1,5 @@
 # 0.5.0
-- [ ] Client rewrite + fixes
+- [ ] Client refactor
 - [ ] Apworld Updates for robustness
 - [ ] Mod Updates for robustness
 - [ ] config menu in client
