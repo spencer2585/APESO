@@ -49,7 +49,7 @@ end
 function APESOHooks.RegisterLootHook()
     ZO_PreHook("LootCurrency", function(currencyType)
         if currencyType == CURT_MONEY then
-            if not APESO.HasUnlimitedWallet then
+            if not APESO.HasInfiniteWallet then
                 if APESOHelpers.IsOverGoldCap() then
                     d("[Archipelago] Cannot loot gold - capacity reached!")
                     return true  -- BLOCK

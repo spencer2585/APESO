@@ -72,8 +72,8 @@ function APESO.ProcessItems()
             local id = item.item_id - APESO.RegionUnlockBaseID
             APESO.ZoneAccess[id] = true
 
-        elseif item.item_id == APESO.UnlimitedWalletID then
-            APESO.HasUnlimitedWallet = true
+        elseif item.item_id == APESO.InfiniteWalletID then
+            APESO.HasInfiniteWallet = true
 
         --if progressive main quest then add to variable
         elseif item.item_id == APESO.MainQuestID then

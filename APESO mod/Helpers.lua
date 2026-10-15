@@ -115,7 +115,7 @@ function APESOHelpers.IsOverGoldCap()
         return false
     end
 
-    if APESO.HasUnlimitedWallet then
+    if APESO.HasInfiniteWallet then
         return false
     end
 
@@ -130,8 +130,8 @@ function APESOHelpers.GetGoldCap()
     if baseGoldCap == 0 then
         return "No Cap"
     end
-    if APESO.HasUnlimitedWallet then
-        return "Have Unlimited Wallet"
+    if APESO.HasInfiniteWallet then
+        return "Have Infinite Wallet"
     end
 
     local totalCapacity = baseGoldCap + (APESO.GoldIncrease * 1000)
