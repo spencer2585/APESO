@@ -8,9 +8,9 @@ APESO.GoldIncreaseID = 149994
 APESO.MainQuestID = 149996
 APESO.InfiniteWalletID = 149997
 APESO.BaseOffset = 150000
-APESO.WayshrineOffset = APESO.BaseOffset
-APESO.WayshrineZoneOffset = APESO.BaseOffset + 1000
-APESO.RegionUnlockBaseID = APESO.BaseOffset + 1100
+APESO.WayshrineOffset = APESO.BaseOffset + 10000 --170000 - 179999 Individual Wayshrine Unlocks
+APESO.WayshrineZoneOffset = APESO.BaseOffset + 20000 --160000 - 169999 Wayshrine unlocks for zones
+APESO.RegionUnlockBaseID = APESO.BaseOffset --150000 - 159999
 
 --recived Items
 APESO.GoldIncrease = 0

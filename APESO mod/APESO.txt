@@ -1,6 +1,6 @@
 ## Title: APESO
 ## Author: |cEFEBBESpencer2585|r
-## APIVersion: 101049
+## APIVersion: 101051
 ## SavedVariables: APESOCheckedLocations
 
 Data/ZoneData.lua
