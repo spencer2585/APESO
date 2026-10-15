@@ -10,6 +10,7 @@ Data/ExtraInteractBlocks.lua
 Data/DelveData.lua
 Data/QuestData.lua
 Data/QuestEquivalences.lua
+Data/Wayshrines.lua
 
 Globals.lua
 Options.lua

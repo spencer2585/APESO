@@ -74,6 +74,7 @@ function APESOHooks.RegisterFastTravelHook()
         _, wayshrineName = GetFastTravelNodeInfo(nodeId)
         if not APESO_Wayshrines[wayshrineName] then
             d("[APESO] Data Error - Blocking Teleport, Please report in the discord: Error on nodeId: "..nodeId)
+            return true
         end
         zone = APESO_Wayshrines[wayshrineName].zone
         zoneid = APESOHelpers.GetZoneIdFromName(zone)
