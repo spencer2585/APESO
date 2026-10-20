@@ -55,9 +55,25 @@ function APESO.UI.CreateMenu()
     APESO.UI.menuTabs["Items"] = itemsContent
     APESO.UI.CreateItemsMenu(itemsContent, wm)
 
+    local apdataTab = wm:CreateControl(nil, tab, CT_LABEL)
+    apdataTab:SetDimensions(90,40)
+    apdataTab:SetAnchor(TOPLEFT, itemsTab, TOPRIGHT, 0, 0)
+    apdataTab:SetText("APData")
+    apdataTab:SetMouseEnabled(true)
+    apdataTab:SetFont("ZoFontWinH2")
+    apdataTab:SetColor(0.77254909276962, 0.7607843875885, 0.61960786581039, 1)
+    apdataTab:SetHandler("OnMouseUp", function() APESO.UI.SetMenuTab("APData") end)
+
+    local apdataContent = wm:CreateControl(nil, menu, CT_CONTROL)
+    apdataContent:SetAnchor(TOPLEFT, tab, BOTTOMLEFT, 0, 0)
+    apdataContent:SetAnchor(BOTTOMRIGHT, closeContainer, TOPRIGHT, 0, 0)
+    APESO.UI.menuTabs["APData"] = apdataContent
+    APESO.UI.CreateApdataMenu(apdataContent, wm)
+    apdataContent:SetHidden(true)
+
     local optionsTab = wm:CreateControl(nil, tab, CT_LABEL)
     optionsTab:SetDimensions(100,40)
-    optionsTab:SetAnchor(TOPLEFT, itemsTab, TOPRIGHT,0,0)
+    optionsTab:SetAnchor(TOPLEFT, apdataTab, TOPRIGHT,0,0)
     optionsTab:SetText("Options")
     optionsTab:SetMouseEnabled(true)
     optionsTab:SetFont("ZoFontWinH2")
@@ -156,6 +172,17 @@ function APESO.UI.CreateItemsMenu(itemsContent, wm)
     delveItemsContainer:SetAnchor(TOPLEFT, delveItemsDropdown, BOTTOMLEFT, 20, 0)
     local delveHeight = 0
 
+    local wayshrineItemsDropdown = wm:CreateControl(nil,scrollChild,CT_LABEL)
+    wayshrineItemsDropdown:SetHeight(20)
+    wayshrineItemsDropdown:SetAnchor(TOPLEFT, delveItemsDropdown, BOTTOMLEFT, 0, 0)
+    wayshrineItemsDropdown:SetText("Wayshrine Acess Items (Click to toggle visibility)")
+    wayshrineItemsDropdown:SetFont("ZoFontGameBold")
+    wayshrineItemsDropdown:SetColor(0.77254909276962, 0.7607843875885, 0.61960786581039, 1)
+    wayshrineItemsDropdown:SetMouseEnabled(true)
+    local wayshrineItemsContainer = wm:CreateControl(nil,scrollChild,CT_CONTROL)
+    wayshrineItemsContainer:SetAnchor(TOPLEFT, wayshrineItemsDropdown, BOTTOMLEFT, 20, 0)
+    local wayshrineHeight = 0
+
     for id, _ in pairs(APESO.ZoneAccess) do
         zoneData = APESO_ZoneData[id]
         local zoneItem = nil
@@ -171,15 +198,34 @@ function APESO.UI.CreateItemsMenu(itemsContent, wm)
         zoneItem:SetHeight(20)
         zoneItem:SetText(zoneData.name.." Access")
         zoneItem:SetFont("ZoFontGame")
-        
     end
+
+    for id, _ in pairs(APESO.WayshrineAccess) do
+        wayshrineItem = wm:CreateControl(nil, wayshrineItemsContainer, CT_LABEL)
+        wayshrineItem:SetAnchor(TOPLEFT, wayshrineItemsContainer, TOPLEFT, 0, WayshrineHeight)
+        wayshrineHeight = wayshrineHeight + 20
+        wayshrineItem:SetHeight(20)
+        wayshrineItem:SetFont("ZoFontGame")   
+        if APESOHelpers.GetOption("wayshrine_locking") == 1 then
+            local zoneData = APESO_ZoneData[id]
+            wayshrineItem:SetText(zoneData.name.." Wayshrines Unlocked")
+        else
+            local wayshrineName = APESOHelpers.GetWayshrineNameFromId(id)
+            wayshrineItem:SetText(wayshrineName.." Unlocked")
+        end         
+    end
+
     zoneItemsContainer:SetHeight(zoneHeight)
     zoneItemsContainer:SetHidden(true)
     zoneItemsDropdown:SetHandler("OnMouseUp",function() APESO.UI.ToggleZoneItemsContainer(zoneItemsContainer, delveItemsDropdown, zoneItemsDropdown) end)
 
     delveItemsContainer:SetHeight(delveHeight)
     delveItemsContainer:SetHidden(true)
-    delveItemsDropdown:SetHandler("OnMouseUp",function() APESO.UI.ToggleDelveItemsContainer(delveItemsContainer) end)
+    delveItemsDropdown:SetHandler("OnMouseUp",function() APESO.UI.ToggleDelveItemsContainer(delveItemsContainer, wayshrineItemsDropdown, delveItemsDropdown) end)
+
+    wayshrineItemsContainer:SetHeight(wayshrineHeight)
+    wayshrineItemsContainer:SetHidden(true)
+    wayshrineItemsDropdown:SetHandler("OnMouseUp",function() APESO.UI.ToggleWayshrineItemsContainer(wayshrineItemsContainer) end)
 end
 
 function APESO.UI.ToggleZoneItemsContainer(zoneItemsContainer, delveItemsDropdown, zoneItemsDropdown)
@@ -193,6 +239,44 @@ function APESO.UI.ToggleZoneItemsContainer(zoneItemsContainer, delveItemsDropdow
     end
 end
 
-function APESO.UI.ToggleDelveItemsContainer(delveItemsContainer)
-    delveItemsContainer:SetHidden(not delveItemsContainer:IsHidden())
+function APESO.UI.ToggleDelveItemsContainer(delveItemsContainer, wayshrineItemsDropdown, delveItemsDropdown)
+    wayshrineItemsDropdown:ClearAnchors()
+    if delveItemsContainer:IsHidden() then
+        wayshrineItemsDropdown:SetAnchor(TOPLEFT, delveItemsContainer, BOTTOMLEFT, -20, 0)
+        delveItemsContainer:SetHidden(false)
+    else
+        wayshrineItemsDropdown:SetAnchor(TOPLEFT, delveItemsDropdown, BOTTOMLEFT, 0, 0)
+        delveItemsContainer:SetHidden(true)
+    end
 end
+
+function APESO.UI.ToggleWayshrineItemsContainer(wayshrineItemsContainer)
+    wayshrineItemsContainer:SetHidden(not wayshrineItemsContainer:IsHidden())
+end
+
+function APESO.UI.CreateApdataMenu(apdataContent, wm)
+    local allianceText = wm:CreateControl(nil, apdataContent, CT_LABEL)
+    if APESOHelpers.GetOption("alliance") == 0 then
+        allianceText:SetText("Alliance: Aldmeri Dominion")
+    elseif APESOHelpers.GetOption("alliance") == 1 then
+        allianceText:SetText("Alliance: Daggerfall Covenent")
+    else
+        allianceText:SetText("Alliance: Ebonheart Pact")
+    end
+    allianceText:SetAnchor(TOPLEFT, apdataContent, TOPLEFT, 20, 0)
+    allianceText:SetHeight(20)
+    allianceText:SetFont("ZoFontGame")
+
+    goalText = wm:CreateControl(nil, apdataContent, CT_LABEL)
+    if APESOHelpers.GetOption("goal") == 0 then
+        goalText:SetText("Goal: Main Quest")
+    elseif APESOHelpers.GetOption("goal") == 1 then
+        goalText:SetText("Goal: Final Zone Quest: ".. APESOHelpers.GetOption("goal_zone"))
+    else
+        goalText:SetText("Goal: Dungeon Delver")
+    end
+    goalText:SetAnchor(TOPLEFT, allianceText, BOTTOMLEFT, 0, 0)
+    goalText:SetHeight(20)
+    goalText:SetFont("ZoFontGame")
+end
+

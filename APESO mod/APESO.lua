@@ -61,22 +61,33 @@ EVENT_MANAGER:RegisterForEvent(APESO.name, EVENT_ADD_ON_LOADED, APESO.OnAddOnLoa
 --processes items in items.lua
 function APESO.ProcessItems()
     -- loop through all items in items.lua
-    for _, item in ipairs(APESO_ReceivedItems) do 
+    -- try against Highest ID to lowest ID
+    for _, item in ipairs(APESO_ReceivedItems) do
 
-        --if gold increase item add to gold increase variable
-        if item.item_id == APESO.GoldIncreaseID then
-            APESO.GoldIncrease = APESO.GoldIncrease + 1
+        if item.item_id > APESO.WayshrineZoneOffset then
+            local id = item.item_id - APESO.WayshrineZoneOffset
+            APESO.WayshrineAccess[id] = true
+
+        elseif item.item_id > APESO.WayshrineOffset then
+            local id = item.item_id - APESO.WayshrineOffset
+            APESO.WayshrineAccess[id] = true
 
         --if within zone Access bounds then add to zone access table
         elseif item.item_id > APESO.RegionUnlockBaseID then
             local id = item.item_id - APESO.RegionUnlockBaseID
             APESO.ZoneAccess[id] = true
 
+        elseif item.item_id == APESO.InfiniteWalletID then
+            APESO.HasInfiniteWallet = true
+
         --if progressive main quest then add to variable
         elseif item.item_id == APESO.MainQuestID then
             APESO.ProgressiveMainQuest = APESO.ProgressiveMainQuest + 1
+
+        --if gold increase item add to gold increase variable
+        elseif item.item_id == APESO.GoldIncreaseID then
+            APESO.GoldIncrease = APESO.GoldIncrease + 1
+
         end
     end
 end
-
-            

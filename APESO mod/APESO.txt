@@ -1,6 +1,6 @@
 ## Title: APESO
 ## Author: |cEFEBBESpencer2585|r
-## APIVersion: 101049
+## APIVersion: 101051
 ## SavedVariables: APESOCheckedLocations
 
 Data/ZoneData.lua
@@ -10,6 +10,7 @@ Data/ExtraInteractBlocks.lua
 Data/DelveData.lua
 Data/QuestData.lua
 Data/QuestEquivalences.lua
+Data/Wayshrines.lua
 
 Globals.lua
 Options.lua

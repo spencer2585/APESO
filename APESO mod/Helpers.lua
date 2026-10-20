@@ -115,6 +115,10 @@ function APESOHelpers.IsOverGoldCap()
         return false
     end
 
+    if APESO.HasInfiniteWallet then
+        return false
+    end
+
     local totalCapacity = baseGoldCap + (APESO.GoldIncrease * 1000)
 
     local CurrentGold = GetCurrencyAmount(CURT_MONEY, CURRENCY_LOCATION_CHARACTER)
@@ -126,6 +130,10 @@ function APESOHelpers.GetGoldCap()
     if baseGoldCap == 0 then
         return "No Cap"
     end
+    if APESO.HasInfiniteWallet then
+        return "Have Infinite Wallet"
+    end
+
     local totalCapacity = baseGoldCap + (APESO.GoldIncrease * 1000)
     return totalCapacity
 end
@@ -201,4 +209,18 @@ function APESOHelpers.CheckIncludedDelve()
         end
     end
     return false
+end
+
+function APESOHelpers.GetZoneIdFromName(zoneName)
+    for id, data in pairs(APESO_ZoneData) do
+        if data.name == zoneName then
+            return id
+        end
+    end
+    return 0
+end
+
+function APESOHelpers.GetWayshrineNameFromId(wayshrineId)
+    local _, name = GetFastTravelNodeInfo(wayshrineId)
+    return name
 end
