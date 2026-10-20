@@ -19,7 +19,12 @@ Right now there are settings to have completing zone quests, main story quests, 
     - included_zones: what zones to include. Leave blank to include all of them  
     - goal_zone: if your goal is zone_quest, then this will be the zone you have to complete the final mission for. set to any for a random zone  
     - zone_quest_enabled: if you want zone quests to be locations in the randomizer  
-    - Wayshrine-checks-enabled: if you want discovering wayshrines to be locations in the randomizer  
+    - main_quest_enabled: If you want main quests to be locations in the randomizer  
+    - wayshrine_checks_enabled: if you want discovering wayshrines to be locations in the randomizer  
+    - delves_per_region: how many delves per region to have included in the randomizer. set to 0 to disable  
+    - wayshrine_locking: If you want the ability to fast travel to wayshrines behind items. 0 - Disabled, 1 - per zone, 2 - individual wayshrines  
+    - base_gold_cap: What the starting gold cap should be without any items. Set to 0 to disable gold limiting  
+    - infinite_wallet: If enabled an item called the infinite wallet will be added to the pool. receiving it will remove the limit on gold
 
 > [!Warning]
 > if you turn off both wayshrine and zone quest checks you will have more items than locations and Archipelago will fail to generate a game
