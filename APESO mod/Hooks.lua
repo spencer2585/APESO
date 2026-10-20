@@ -84,17 +84,19 @@ function APESOHooks.RegisterFastTravelHook()
         end
         if APESOHelpers.CheckZoneAccess(zoneid) then
             -- Zone is Unlocked check for item
-            wayshrineLocking = APESOHelpers.getOption("wayshrine_locking")
+            wayshrineLocking = APESOHelpers.GetOption("wayshrine_locking")
             if wayshrineLocking == 2 then
                 if APESO.WayshrineAccess[nodeId] then
                     return false
                 else
+                    d("You do not have access to that wayshrine")
                     return true
                 end
             elseif wayshrineLocking == 1 then
                 if APESO.WayshrineAccess[zoneid] then
                     return false
                 else
+                    d("You do not have access to that zones wayshrines")
                     return true
                 end
             else

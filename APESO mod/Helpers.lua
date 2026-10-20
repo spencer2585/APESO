@@ -212,7 +212,7 @@ function APESOHelpers.CheckIncludedDelve()
 end
 
 function APESOHelpers.GetZoneIdFromName(zoneName)
-    for id, data in ipairs(APESO_ZoneData) do
+    for id, data in pairs(APESO_ZoneData) do
         if data.name == zoneName then
             return id
         end
